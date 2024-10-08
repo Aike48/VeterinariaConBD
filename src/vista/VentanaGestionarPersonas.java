@@ -1,4 +1,4 @@
 package vista;
 
-public class VentanaGestionarPersonass {
+public class VentanaGestionarPersonas {
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PersonasDAO {
 
-    // Create (Insertar una Personas)
+ /**   // Create (Insertar una Personas)
     public boolean insertarPersonas(PersonasVO Personas) {
         String sql = "INSERT INTO Personass (nombre, email) VALUES (?, ?)";
         try (Connection conexion = Conexion.getConnection();
@@ -49,7 +49,6 @@ public class PersonasDAO {
             ps.setString(1, Personas.getNombre());
             ps.setString(2, Personas.getEmail());
 
-            Conexión a Bases de Datos con MySQL usando Java + Patrón DAO y VO 4
 
             ps.setInt(3, Personas.getId());
             return ps.executeUpdate() > 0;
@@ -69,5 +68,5 @@ public class PersonasDAO {
             System.out.println("Error al eliminar Personas: " + e.getMessage());
             return false;
         }
-    }
+    } **/
 }

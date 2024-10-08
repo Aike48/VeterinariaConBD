@@ -1,13 +1,13 @@
 package modelo.VO;
 import java.util.Date;
 
-public class PersonassVO {
+public class PersonasVO {
     private int id;
     private String nombre;
     private int documento;
     private int telefono;
 
-    public PersonassVO (int id, String nombre, int documento, int telefono){
+    public PersonasVO (int id, String nombre, int documento, int telefono){
         this.id = id;
         this.nombre = nombre;
         this.documento = documento;
