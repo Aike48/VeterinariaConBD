@@ -1,0 +1,44 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS veterinaria DEFAULT CHARACTER SET utf8 ;
+USE veterinaria ;
+
+-- -----------------------------------------------------
+-- Table personas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS veterinaria.personas (
+  idpersonas INT NOT NULL AUTO_INCREMENT,
+  doc INT NOT NULL,
+  nombrePersona VARCHAR(65) NOT NULL,
+  telefono VARCHAR(45) NOT NULL,
+  PRIMARY KEY (idpersonas))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table animales
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS veterinaria.animales (
+  idanimales INT NOT NULL AUTO_INCREMENT,
+  idpersonas INT NOT NULL,
+  nombreAnimal VARCHAR(45) NOT NULL,
+  razaAnimal VARCHAR(45) NOT NULL,
+  sexoAnimal VARCHAR(45) NOT NULL,
+  nacimientoAnimal DATE NOT NULL,
+  PRIMARY KEY (idanimales),
+  CONSTRAINT fk_animales_personas
+    FOREIGN KEY (idpersonas)
+    REFERENCES veterinaria.personas (idpersonas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
