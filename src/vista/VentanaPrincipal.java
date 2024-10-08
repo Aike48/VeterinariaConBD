@@ -5,6 +5,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+
 import controlador.*;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
@@ -18,7 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     }
 
     public VentanaPrincipal() {
-        setSize(491, 426);
+        setSize(691, 626);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         iniciar();
@@ -34,35 +36,37 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelPrincipal.setLayout(null);
         panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
         panelPrincipal.setBounds(0, 0, 477, 379);
-        getContentPane().add(panelPrincipal);
+        contentPane.add(panelPrincipal);
 
         btnGestionarPersonas = new JButton("Gestionar Personas");
         btnGestionarPersonas.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        btnGestionarPersonas.setBounds(31, 278, 184, 31);
+        btnGestionarPersonas.setBounds(100, 478, 224, 31);
         btnGestionarPersonas.addActionListener(this); // Registrando el ActionListener
         panelPrincipal.add(btnGestionarPersonas);
 
         btnGestionarMascotas = new JButton("Gestionar Mascotas");
         btnGestionarMascotas.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        btnGestionarMascotas.setBounds(243, 278, 184, 31);
+        btnGestionarMascotas.setBounds(363, 478, 224, 31);
         btnGestionarMascotas.addActionListener(this); // Registrando el ActionListener
         panelPrincipal.add(btnGestionarMascotas);
 
         miCoordinador = new Coordinador();
     }
 
-    private void gestionarpersonas() {
-        // Lógica para gestionar personas
+    private void gestionarPersonas() {
+        VentanaGestionarPersonas ventana = new VentanaGestionarPersonas();
+        ventana.setVisible(true);
     }
 
     private void gestionarMascotas() {
-        // Lógica para gestionar mascotas
+        VentanaGestionarMascotas ventana = new VentanaGestionarMascotas();
+        ventana.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnGestionarPersonas) {
-            gestionarpersonas();
+            gestionarPersonas();
         } else if (e.getSource() == btnGestionarMascotas) {
             gestionarMascotas();
         }
@@ -73,8 +77,16 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         private Image imagen;
 
         public JPanelImagen() {
-            imagen = new ImageIcon(getClass().getResource("/vista/imagen/gato2.jpg")).getImage();
+            URL imgUrl = getClass().getResource("/vista/imagen/gato2.jpg");
+            if (imgUrl == null){
+                System.out.println ("Error con la imagen");
+            } else {
+                //imagen = new ImageIcon(imgUrl).getImage();
+                System.out.println("Si carga");
+                imagen = new ImageIcon(getClass().getResource("/vista/imagen/gato2.jpg")).getImage();
+            }
         }
+
 
         @Override
         protected void paintComponent(Graphics g) {
